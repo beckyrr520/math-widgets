@@ -78,6 +78,10 @@ figure.interactive {
   padding: 1rem 1rem 0.75rem;
   background: var(--panel);
   border-radius: 10px;
+  min-width: 0;
+}
+@media (max-width: 480px) {
+  figure.interactive { padding: 0.75rem 0.6rem 0.6rem; margin-inline: -0.25rem; }
 }
 figure.interactive figcaption {
   font-family: var(--font-ui);
@@ -87,11 +91,14 @@ figure.interactive figcaption {
 }
 .figure-label { font-weight: 700; color: var(--ink); }
 
-/* Vector addition widget */
-.va { font-family: var(--font-ui); }
+/* Vector addition widget
+   The drawing sizes itself in vector-addition.js; these rules size everything
+   around it from the width of the widget itself (container queries), so it
+   fits a phone, a sidebar or a full-width projector page the same way. */
+.va { font-family: var(--font-ui); container-type: inline-size; min-width: 0; }
 .va-equation {
-  font-size: 1.6rem; font-weight: 700; text-align: center;
-  font-variant-numeric: tabular-nums; min-height: 2.2rem;
+  font-size: clamp(1.3rem, 6cqi, 1.75rem); font-weight: 700; text-align: center;
+  font-variant-numeric: tabular-nums; line-height: 1.3;
 }
 .va-equation span { opacity: 0.35; transition: opacity .25s; }
 .va-equation span.is-on { opacity: 1; }
@@ -99,34 +106,51 @@ figure.interactive figcaption {
 .va-equation .va-b { color: var(--vec-b); }
 .va-equation .va-sum { color: var(--vec-sum); }
 .va-equation sup { font-size: 0.6em; }
-.va-stage { overflow-x: auto; }
-.va-stage svg { display: block; width: 100%; height: auto; }
+.va-stage { width: 100%; min-width: 0; overflow: hidden; }
+.va-stage svg { display: block; width: 100%; height: auto; overflow: hidden; }
 .va-line, .va-tick, .va-zero { stroke: var(--muted); stroke-width: 1.5; }
 .va-zero { stroke: var(--ink); stroke-width: 2.5; }
-.va-num { fill: var(--muted); font-size: 15px; text-anchor: middle; font-family: var(--font-ui); }
+.va-num { fill: var(--muted); text-anchor: middle; font-family: var(--font-ui); font-variant-numeric: tabular-nums; }
 .va-zero-label { fill: var(--ink); font-weight: 700; }
 .va-arrow { opacity: 0; transition: opacity .3s; }
 .va-arrow.is-on { opacity: 1; }
-.va-arrow line { stroke-width: 5; stroke-linecap: round; }
-.va-arrow text { font-size: 20px; font-weight: 700; text-anchor: middle; font-family: var(--font-ui); }
-.va-arrow.va-a line { stroke: var(--vec-a); }  .va-arrow.va-a circle, .va-arrow.va-a text, .va-head.va-a { fill: var(--vec-a); }
-.va-arrow.va-b line { stroke: var(--vec-b); }  .va-arrow.va-b circle, .va-arrow.va-b text, .va-head.va-b { fill: var(--vec-b); }
-.va-arrow.va-sum line { stroke: var(--vec-sum); } .va-arrow.va-sum circle, .va-arrow.va-sum text, .va-head.va-sum { fill: var(--vec-sum); }
+.va-arrow line { stroke-linecap: butt; }
+.va-arrow text { font-weight: 700; text-anchor: middle; font-family: var(--font-ui); }
+.va-arrow.va-a line { stroke: var(--vec-a); }     .va-arrow.va-a circle, .va-arrow.va-a path, .va-arrow.va-a text { fill: var(--vec-a); }
+.va-arrow.va-b line { stroke: var(--vec-b); }     .va-arrow.va-b circle, .va-arrow.va-b path, .va-arrow.va-b text { fill: var(--vec-b); }
+.va-arrow.va-sum line { stroke: var(--vec-sum); } .va-arrow.va-sum circle, .va-arrow.va-sum path, .va-arrow.va-sum text { fill: var(--vec-sum); }
 .va-land { fill: var(--vec-sum); opacity: 0; transition: opacity .3s; }
 .va-land.is-on { opacity: 1; }
-.va-steps { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.5rem; }
+
+/* Buttons: Reset and the three steps share one row; "New example" sits at the
+   end on wide widgets and gets its own full row on narrow ones. */
+.va-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
 .va-steps button {
   font: inherit; font-size: 0.95rem;
-  padding: 0.45rem 0.9rem;
+  min-width: 0;
+  padding: 0.5rem 0.6rem;
   border-radius: 6px;
   border: 1.5px solid var(--accent);
   background: transparent; color: var(--accent);
   cursor: pointer;
+  white-space: nowrap;
 }
 .va-steps button[aria-pressed="true"], .va-steps button:hover { background: var(--accent); color: var(--paper); }
-.va-steps .va-new { margin-left: auto; }
-.va-caption { font-size: 0.95rem; text-align: center; color: var(--ink); min-height: 3em; margin: 0.75rem 0 0; }
-@media (max-width: 480px) { .va-steps .va-new { margin-left: 0; } }
+.va-steps .va-new { margin-left: 1rem; }
+@container (max-width: 520px) {
+  .va-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .va-steps .va-new { grid-column: 1 / -1; margin-left: 0; }
+}
+@container (max-width: 330px) {
+  .va-steps { gap: 0.35rem; }
+  .va-steps button { font-size: 0.85rem; padding: 0.5rem 0.2rem; }
+}
+.va-caption { font-size: 0.95rem; text-align: center; color: var(--ink); min-height: 3em; margin: 0.75rem 0 0; overflow-wrap: anywhere; text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { .va-arrow, .va-land, .va-equation span { transition: none; } }
 
 /* Footnotes */
