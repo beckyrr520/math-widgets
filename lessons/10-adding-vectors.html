@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Adding with Vectors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:opsz,wght@7..72,400;7..72,700&display=swap">
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<main class="page">
+  <nav class="crumbs"><a href="../index.html">All lessons</a><span>/</span><span>Lesson 10</span></nav>
+
+  <p class="eyebrow">Lesson 10 · Integers</p>
+  <h1>Adding with Vectors</h1>
+
+  <p>In the previous section we talked about additive inverses by describing them in terms of discrete objects or quantities. Another useful way of thinking about integers is as vectors. Remember how our Hindu-Arabic numeral system gave us a way of expressing quantities by encoding information about sizes of groups according to place value position and information about the number of groups of each size by the face value of the digit in the corresponding position? In the context of measurement, the size of a number is called its <span class="term">magnitude</span> and describes its distance away from 0. Integers convey all of the same information as natural numbers: the numeral indicates the magnitude, or size of the number. In addition, <span class="term">vectors</span> also convey information about direction, which is given by the sign of the number (either positive (+) or negative (<sup class="neg">−</sup>)).</p>
+
+  <p>We can represent vectors geometrically with an arrow where the length of the arrow corresponds to the magnitude of a number and the direction of the arrow is given by the sign of the number.</p>
+
+  <h2>Giving directions with integers</h2>
+
+  <p>Integers are useful for keeping track of quantities, but can also be used to give directions. For example, consider the following set of simple instructions: <em>Take two steps right then take 3 more steps right.</em> We could visualize this movement using the number line pictured below.</p>
+
+  <figure class="interactive">
+    <div data-widget="vector-addition" data-a="2" data-b="3" data-negatives="no"></div>
+    <figcaption><span class="figure-label">Try it.</span> Press each step in order. “New example” makes up a new pair of numbers.</figcaption>
+  </figure>
+
+  <p>If we let the direction “right” correspond to the positive sign and “left” correspond to the negative sign, we could give directions like this: <em>Take 3 steps followed by <sup class="neg">−</sup>2 steps.</em> This is the same as saying take 3 steps to the right then take two steps to the left.</p>
+
+  <figure class="interactive">
+    <div data-widget="vector-addition" data-a="3" data-b="-2"></div>
+    <figcaption><span class="figure-label">Try it.</span> “New example” here can use negative numbers too.</figcaption>
+  </figure>
+
+  <p>Notice that our ending position corresponds to the sum 3 + <sup class="neg">−</sup>2 = 1. Geometrically, we say that vectors add by positioning the vectors nose to tail. The final position of the head of the last arrow corresponds to the quantity represented by the sum.</p>
+
+  <h2>Two dimensions</h2>
+
+  <p>We can extend this idea to two dimensions. Let’s continue using positive numbers to correspond to the direction “right” and negative numbers to correspond to the direction “left” in the horizontal direction. But let’s also let positive numbers correspond to the direction “up” (think, North) and negative numbers correspond to the direction “down” (think, South) in the vertical direction (on the page). Then we can give directions like: <em>Take 3 steps horizontally followed by <sup class="neg">−</sup>1 step vertically.</em></p>
+
+  <figure class="interactive">
+    <svg viewBox="0 0 300 200" role="img" aria-label="Grid showing two paths from the origin to the point (3, negative 1): 3 right then 1 down, or 1 down then 3 right" style="display:block;width:100%;max-width:420px;margin:0 auto">
+      <defs>
+        <marker id="h2a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--vec-a)"/></marker>
+        <marker id="h2b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--vec-b)"/></marker>
+      </defs>
+      <g style="stroke:var(--rule);stroke-width:1">
+        <line x1="30" x2="270" y1="20" y2="20"/><line x1="30" x2="270" y1="60" y2="60"/><line x1="30" x2="270" y1="140" y2="140"/><line x1="30" x2="270" y1="180" y2="180"/>
+        <line x1="30" x2="30" y1="20" y2="180"/><line x1="70" x2="70" y1="20" y2="180"/><line x1="150" x2="150" y1="20" y2="180"/><line x1="190" x2="190" y1="20" y2="180"/><line x1="230" x2="230" y1="20" y2="180"/><line x1="270" x2="270" y1="20" y2="180"/>
+      </g>
+      <g style="stroke:var(--muted);stroke-width:2">
+        <line x1="30" x2="270" y1="100" y2="100"/><line x1="110" x2="110" y1="20" y2="180"/>
+      </g>
+      <g style="stroke:var(--vec-a);stroke-width:4;stroke-linecap:round">
+        <line x1="110" y1="100" x2="226" y2="100" marker-end="url(#h2a)"/>
+        <line x1="230" y1="100" x2="230" y2="136" marker-end="url(#h2a)"/>
+      </g>
+      <g style="stroke:var(--vec-b);stroke-width:4;stroke-linecap:round;stroke-dasharray:2 8">
+        <line x1="110" y1="100" x2="110" y2="136" marker-end="url(#h2b)"/>
+        <line x1="114" y1="140" x2="226" y2="140" marker-end="url(#h2b)"/>
+      </g>
+      <circle cx="110" cy="100" r="4" style="fill:var(--ink)"/>
+      <circle cx="230" cy="140" r="6" style="fill:var(--vec-sum)"/>
+      <text x="238" y="162" style="fill:var(--vec-sum);font:700 15px var(--font-ui)">(3, ⁻1)</text>
+      <text x="84" y="94" style="fill:var(--ink);font:700 13px var(--font-ui)">0</text>
+    </svg>
+    <figcaption><span class="figure-label">Figure.</span> Green: 3 steps right, then 1 step down. Blue dashes: 1 step down, then 3 steps right. Both paths end at <span class="coord">(3, <sup class="neg">−</sup>1)</span>.</figcaption>
+  </figure>
+
+  <p>We could define a position in two dimensions by giving a horizontal and vertical coordinate. This is often done using the notation of an ordered pair like <span class="coord">(3, <sup class="neg">−</sup>1)</span> where the first number represents a movement in the horizontal direction and the second number represents a movement in the vertical direction. Notice that we could take <sup class="neg">−</sup>1 vertically and 3 steps horizontally and end up in the same place!</p>
+
+  <h2>Vectors and computer programming</h2>
+
+  <p>Being able to express simple directions like this using vectors actually gives you the building blocks for learning about computer programming.<sup><a href="#fn1" id="ref1">1</a></sup> Have you ever wondered how your computer applications, or even your calculator, know how to do what they do? Someone had to program them by giving them directions telling your computer what to do with information you put into it. The more you understand about how computers get their directions, the easier it can be for you to learn how to use new technology. In fact, you can test how new technology works by giving it directions and seeing what it does.</p>
+
+  <p>Calculators, for example, can deal with negative signs differently,<sup><a href="#fn2" id="ref2">2</a></sup> depending on how they have been programmed. Some calculators require you to enter a number before you can put a negative sign in front of it. Other calculators will let you enter the negative sign first. You might also notice that your calculator probably differentiates between a negative sign and subtraction. What happens if you enter the subtraction symbol followed by a 5 and then press “=” or enter? Depending on your calculator, it might treat your instructions as subtracting 5 from 0 giving you <sup class="neg">−</sup>5. On the other hand, your calculator might “yell” at you and display a message like “error” or “syntax error” on the screen. This is your calculator informing you that it doesn’t know how to handle your instruction.</p>
+
+  <p>I would encourage you to play around with your calculator and see what kind of instructions you can give it and try to figure out what it is doing and if it is doing what you expect. A word of caution: sometimes random key strokes (especially on scientific calculators) can switch on modes that are hard to turn off if you’re not paying careful attention to which combination of keystrokes enabled you to turn that mode on in the first place. For now you might want to stick with combinations of keystrokes involving numbers and operations you are familiar with. If you want to explore other operations, you might want to have a manual handy just in case you need help backing yourself out of a jam. In any case, I would encourage you to limit your exploration to times when you won’t be needing your calculator for something important, like on an exam.</p>
+
+  <section class="footnotes" aria-label="Footnotes">
+    <ol>
+      <li id="fn1">For some resources that give a nice introduction to coding and computer programming check out: The Hour of Code (<a href="https://code.org/">code.org</a>), or one simple puzzle with a number of solutions where you try to get the turtle to the pond (<a href="http://illuminations.nctm.org/Activity.aspx?id=3534">NCTM Illuminations</a>). For more of a challenge, check out the Cargo-Bot app for iPad (<a href="http://twolivesleft.com/CargoBot/">twolivesleft.com/CargoBot</a>) (I haven’t even finished all the levels). You might also check out the board game RoboRally! <a href="#ref1" aria-label="Back to text">↩</a></li>
+      <li id="fn2">The negative sign on a calculator can usually be found on a button that looks like “+/−”. <a href="#ref2" aria-label="Back to text">↩</a></li>
+    </ol>
+  </section>
+
+  <nav class="lesson-nav"><a href="../index.html">← All lessons</a></nav>
+</main>
+<script src="../widgets/vector-addition.js"></script>
+</body>
+</html>
